@@ -30,10 +30,10 @@ class _EmailFormState extends State<EmailForm> {
           ),
         ),
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             debugPrint('Email: ${_emailController.text}');
             debugPrint('Password: ${_passwordController.text}');
-            context.authNotifier.createSession(
+            await context.authNotifier.createSession(
               email: _emailController.text,
               password: _passwordController.text,
             );

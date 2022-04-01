@@ -1,7 +1,3 @@
-library flappwrite_ui;
-
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:flappwrite_account_kit/flappwrite_account_kit.dart';
+export 'src/auth/screens/login.screen.dart';
+export 'src/auth/screens/profile.screen.dart';
