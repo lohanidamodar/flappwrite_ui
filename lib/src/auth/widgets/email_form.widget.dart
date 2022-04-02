@@ -48,10 +48,16 @@ class _EmailFormState extends State<EmailForm> {
                 name: _nameController.text,
               );
             } else {
-              await context.authNotifier.createSession(
+              final loggedIn = await context.authNotifier.createSession(
                 email: _emailController.text,
                 password: _passwordController.text,
               );
+              if (!loggedIn) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                      context.authNotifier.error ?? 'Unknown error occurred'),
+                ));
+              }
             }
           },
           child: widget.action == AuthAction.signUp
