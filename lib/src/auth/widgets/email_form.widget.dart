@@ -41,23 +41,27 @@ class _EmailFormState extends State<EmailForm> {
         ),
         ElevatedButton(
           onPressed: () async {
+            bool success = false;
             if (widget.action == AuthAction.signUp) {
-              await context.authNotifier.create(
+              final user = await context.authNotifier.create(
                 email: _emailController.text,
                 password: _passwordController.text,
                 name: _nameController.text,
               );
+              if (user != null) {
+                success = true;
+              }
             } else {
-              final loggedIn = await context.authNotifier.createSession(
+              success = await context.authNotifier.createSession(
                 email: _emailController.text,
                 password: _passwordController.text,
               );
-              if (!loggedIn) {
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(
-                      context.authNotifier.error ?? 'Unknown error occurred'),
-                ));
-              }
+            }
+            if (!success) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                    context.authNotifier.error ?? 'Unknown error occurred'),
+              ));
             }
           },
           child: widget.action == AuthAction.signUp
