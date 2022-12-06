@@ -6,7 +6,7 @@ final client = Client();
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   client.setEndpoint(config.endpoint).setProject(config.projectId);
-  runApp(FlAppwriteAccountKit(client: client, child: const MyApp()));
+  runApp(AppwriteAuthKit(client: client, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +21,16 @@ class MyApp extends StatelessWidget {
       ),
       home: context.authNotifier.status == AuthStatus.authenticated
           ? const HomeScreen()
-          : const LoginScreen(),
+          : LoginScreen(
+              headerBuilder: (context, action) => Column(
+                children: [
+                  Text(
+                    "Login",
+                    style: Theme.of(context).textTheme.displayMedium,
+                  )
+                ],
+              ),
+            ),
       routes: {
         "profile": (context) => const ProfileScreen(),
         "register": (context) => const RegisterScreen(),

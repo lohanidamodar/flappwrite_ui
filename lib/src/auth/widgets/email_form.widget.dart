@@ -1,6 +1,6 @@
+import 'package:appwrite_auth_kit/appwrite_auth_kit.dart';
 import 'package:flappwrite_ui/src/auth/utils/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:flappwrite_account_kit/flappwrite_account_kit.dart';
 
 class EmailForm extends StatefulWidget {
   final AuthAction? action;
@@ -52,7 +52,7 @@ class _EmailFormState extends State<EmailForm> {
                 success = true;
               }
             } else {
-              success = await context.authNotifier.createSession(
+              success = await context.authNotifier.createEmailSession(
                 email: _emailController.text,
                 password: _passwordController.text,
               );

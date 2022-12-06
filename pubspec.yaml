@@ -8,9 +8,8 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  appwrite: ^4.0.1
-  flappwrite_account_kit:
-    git: https://github.com/lohanidamodar/flappwrite_account_kit
+  appwrite: ^8.1.0
+  appwrite_auth_kit: ^0.6.0
   flutter:
     sdk: flutter
 
