@@ -23,7 +23,7 @@ class _EmailFormState extends State<EmailForm> {
           TextField(
             controller: _nameController,
             decoration: const InputDecoration(
-              labelText: 'Email',
+              labelText: 'Name',
             ),
           ),
         TextField(
