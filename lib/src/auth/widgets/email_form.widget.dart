@@ -57,7 +57,7 @@ class _EmailFormState extends State<EmailForm> {
                 password: _passwordController.text,
               );
             }
-            if (!success) {
+            if (!success && mounted) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text(
                     context.authNotifier.error ?? 'Unknown error occurred'),
